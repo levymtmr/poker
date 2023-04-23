@@ -1,7 +1,6 @@
 package tests
 
 import (
-	"reflect"
 	"testing"
 
 	"github.com/levymtmr/poker/core"
@@ -27,9 +26,18 @@ func TestNewDeck(t *testing.T) {
 
 func TestShuffleDeck(t *testing.T) {
 	deck := core.NewDeck()
-	shuffledDeck := core.ShuffleDeck(deck)
+	for i := 0; i < 10; i++ {
+		shuffledDeck := core.ShuffleDeck(deck)
 
-	if reflect.DeepEqual(deck, shuffledDeck) {
-		t.Errorf("Expected deck to be shuffled, but it's the same as the unshuffled deck")
+		if len(shuffledDeck) != len(deck) {
+			t.Errorf("Expected both deck has the same size")
+		}
+
+		for i, card := range shuffledDeck {
+			if card.Value != deck[i].Value || card.Suit != deck[i].Suit {
+				t.Errorf("Expected difference between value position")
+			}
+		}
+
 	}
 }

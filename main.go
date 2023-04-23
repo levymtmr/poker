@@ -8,6 +8,13 @@ import (
 
 func main() {
 	cards := core.NewDeck()
-	fmt.Println(cards)
-	fmt.Println(core.ShuffleDeck(cards))
+	shuffledCards := core.ShuffleDeck(cards)
+
+	for i := 0; i < len(shuffledCards); i++ {
+		fmt.Println(*shuffledCards[i])
+	}
+
+	// fmt.Println(cards)
+	// fmt.Println(core.ShuffleDeck(cards))
+
 }
